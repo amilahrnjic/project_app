@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jQuery -->
+    <!-- Include jQuery UI library -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Include jQuery UI CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script> <!-- jQuery Validate -->
+   <!-- <script src="../forms/validate-appointment.js"></script> -->
+
+       
+    </head>
+    <body>
+        
+            <!--Page Title-->
+            <section class="page-title text-center" style="background-image:url(images/background/3.jpg);">
+                <div class="container">
+                    <div class="title-text">
+                        <h1>appointment</h1>
+                        <ul class="title-menu clearfix">
+                            <li>
+                                <a href="home.html">home &nbsp;/</a>
+                            </li>
+                            <li>appointment</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!--End Page Title-->
+            <!-- Contact Section -->
+                 <!-- End Contact Section -->
+                   <!-- Include jQuery and jQuery UI scripts -->
+    
+
+                 
+            <section class="blog-section section style-three pb-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="contact-area style-two">
+                                <div class="section-title">
+                                    <h3>Request <span>Appointment</span></h3>
+                                </div>
+                                <form name="contact_form" class="default-form contact-form" action="" method="" id="form-appointment">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="appname" placeholder="Name"  id="appname">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="appemail" placeholder="Email" id="appemail">
+                                            </div>
+                                        <!--   <div class="form-group">
+                                                <select name="subject" id="select_station">
+                                                    <option>Veterinary station 1</option>
+                                                    <option>Veterinary Station 2</option>
+                                                    <option>Veterinary Station 3</option>
+                                                </select>
+                                            </div> -->
+
+                                            <div class="form-group">
+                                                <input type="text" name="appvet_station" placeholder="Veterinary Station"  id="appvet_station">
+                                            </div>
+                                        
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="appsurname" placeholder="Surname"  id="appsurname">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="appphone" placeholder="Phone"  id="appphone">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="appdate" placeholder="Date"  id="appdate" class="date">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group text-centear">
+                                                <button type="submit" class="btn-style-one" id="add_appointment">submit now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="appointment-image-holder">
+                                <figure>
+                                    <img src="../images/background/appoinment.jpg" alt="Appointment">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+
+            <script>
+                $(function() {
+                    $("#appdate").datepicker();
+                });
+            </script>
+
+        <script src="forms/validate-appointment.js"> </script>
+
+
+    </body>
+</html>

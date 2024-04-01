@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Veterinary Station 1",
+        "email": "vetstation1@gmail.com",
+        "address": "Address 1",
+        "phone": "065-456-789",
+        "working_hours": "8:00 - 17:00"
+    },
+    {
+        "id": 2,
+        "name": "Veterinary Station 2",
+        "email": "vetstation2@gmail.com",
+        "address": "Address 2",
+        "phone": "065-456-709",
+        "working_hours": "8:00 - 17:00"
+    },
+    {
+        "id": 3,
+        "name": "Veterinary Station 3",
+        "email": "vetstation3@gmail.com",
+        "address": "Address 3",
+        "phone": "065-456-445",
+        "working_hours": "8:00 - 17:00"
+    },
+    {
+        "id": 4,
+        "name": "Veterinary Station 4",
+        "email": "vetstation4@gmail.com",
+        "address": "Address 4",
+        "phone": "065-456-7745",
+        "working_hours": "8:00 - 17:00"
+    },
+    {
+        "id": 5,
+        "name": "Veterinary Station 5",
+        "email": "vetstation5@gmail.com",
+        "address": "Address 5",
+        "phone": "065-656-7745",
+        "working_hours": "8:00 - 17:00"
+    }
+
+
+]

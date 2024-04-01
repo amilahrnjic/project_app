@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "name": "Max",
+      "species": "dog",
+      "breed": "Labrador Retriever",
+      "age": "3 years",
+      "disease": "Fever"
+    },
+    {
+      "id": 2,
+      "name": "Bella",
+      "species": "cat",
+      "breed": "Siamese",
+      "age": "5 years",
+      "disease": "Ear Infection"
+    },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "species": "dog",
+      "breed": "German Shepherd",
+      "age": "2 years",
+      "disease": "Skin Allergy"
+    },
+    {
+      "id": 4,
+      "name": "Lucy",
+      "species": "cat",
+      "breed": "Maine Coon",
+      "age": "4 years",
+      "disease": "Obesity"
+    },
+    {
+      "id": 5,
+      "name": "Buddy",
+      "species": "dog",
+      "breed": "Golden Retriever",
+      "age": "6 years",
+      "disease": "Arthritis"
+    },
+    {
+      "id": 6,
+      "name": "Luna",
+      "species": "cat",
+      "breed": "Persian",
+      "age": "2 years",
+      "disease": "Urinary Tract Infection"
+    },
+    {
+      "id": 7,
+      "name": "Rocky",
+      "species": "dog",
+      "breed": "Boxer",
+      "age": "4 years",
+      "disease": "Heartworm"
+    },
+    {
+      "id": 8,
+      "name": "Daisy",
+      "species": "dog",
+      "breed": "Beagle",
+      "age": "1 year",
+      "disease": "Parvovirus"
+    },
+    {
+      "id": 9,
+      "name": "Milo",
+      "species": "cat",
+      "breed": "Scottish Fold",
+      "age": "3 years",
+      "disease": "Feline Leukemia"
+    },
+    {
+      "id": 10,
+      "name": "Bailey",
+      "species": "dog",
+      "breed": "Poodle",
+      "age": "5 years",
+      "disease": "Diabetes"
+    }
+  ]
+  

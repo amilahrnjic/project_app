@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+     <!--  <link href="../assets/css/spinkit.css" rel="stylesheet">  trebam tek dodati kod--> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jQuery -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script> <!-- jQuery Validate -->
+     <script src="../forms/validate-form.js"></script>
+     
+
+    </head>
+
+    <body>
+        
+            <!--Page Title-->
+            <section class="page-title text-center" style="background-image:url(images/background/3.jpg);">
+                <div class="container">
+                    <div class="title-text">
+                        <h1>Veterinary Stations</h1>
+                        <ul class="title-menu clearfix">
+                            <li>
+                                <a href="home.html">home &nbsp;/</a>
+                            </li>
+                            <li>Veterinary Station</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!--End Page Title-->
+            <section class="team-section section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title text-center">
+                                <h3>Our
+                                    <span>Veterinary Stations</span>
+                                </h3>
+                                <p>Discover Our Veterinary Stations: With locations across Mondaba, our veterinary network offers convenient access to exceptional care for your pets. Each of our stations is equipped with state-of-the-art facilities and
+                                    staffed by compassionate professionals dedicated to the well-being of your furry companions
+                                </p>
+                            </div>
+                            <!-- Nav tabs -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+          <!--   <div id="stations-container"></div> -->
+          <section class="veterinary-station">
+            <div class="container">
+                <div class="row" id="stations-container">
+                    <!-- Stations will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+    
+
+            <script>
+                async function fetchStations() {
+                    try {
+                        const response = await fetch('./datajson/stations.json');
+                        const data = await response.json();
+                        return data;
+                    } catch (error) {
+                        console.error('Error fetching stations:', error);
+                        return [];
+                    }
+                }
+        
+                async function displayStations() {
+                    const stations = await fetchStations();
+                    const stationsContainer = document.getElementById('stations-container');
+        
+                    // Clear existing content
+                    stationsContainer.innerHTML = '';
+        
+                    // Check if stations is an array
+                    if (Array.isArray(stations)) {
+                        // Loop through each station and create HTML elements to display them
+                        stations.forEach(station => {
+                            const stationElement = document.createElement('div');
+                            stationElement.classList.add('station');
+        
+                            const titleElement = document.createElement('h2');
+                            titleElement.textContent = station.name;
+                            stationElement.appendChild(titleElement);
+        
+                            const emailElement = document.createElement('p');
+                            emailElement.textContent = `Email: ${station.email}`;
+                            stationElement.appendChild(emailElement);
+        
+                            const addressElement = document.createElement('p');
+                            addressElement.textContent = `Address: ${station.address}`;
+                            stationElement.appendChild(addressElement);
+        
+                            const phoneElement = document.createElement('p');
+                            phoneElement.textContent = `Phone: ${station.phone}`;
+                            stationElement.appendChild(phoneElement);
+        
+                            const workingHoursElement = document.createElement('p');
+                            workingHoursElement.textContent = `Working Hours: ${station.working_hours}`;
+                            stationElement.appendChild(workingHoursElement);
+        
+                            stationsContainer.appendChild(stationElement);
+                        });
+                    } else {
+                        console.error('Stations data is not in the expected format:', stations);
+                    }
+                }
+        
+                window.addEventListener('load', displayStations);
+            </script>
+           
+
+
+
+           <!-- registration form-->
+            <section class="register-station-section section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 contact-area style-two">
+                            <div class="section-title text-center">
+                                <h3>Register
+                                    <span>Veterinary Stations</span>
+                                </h3>
+                            </div>
+                            <form name="form_vetstation" class="default-form contact-form" method="post" action="" id="form_vetstation">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="Name" required="" id="name">
+                                 <!--    <label id="name-error" class="error" for="name"> This field is required</label> -->
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="email" placeholder="Email" required="" id="email"> <!--hocu izbrisati ovaj required ovdje?-->
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="address" placeholder="Address" required="" id="address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" placeholder="Phone" required="" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="working_hours" placeholder="Working hours" required="" id="working_hours">
+                                </div>
+                                <button type="submit" class="btn-style-one" id="add_vetstation">submit now</button>
+                   
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+         <!--    <script src="assets/js/fetchdata.js"></script> -->
+
+          
+
+
+
+           
+         <!--<scritp src="../assets/js/block-ui.js"></scritp> nisam kreirala kod ovdje-->
+          <!--  <script src="../../project_app/forms/validate-form.js"></script> file in folder forms for validation-->
+         
+           
+
+
+
+    </body>
+</html>
