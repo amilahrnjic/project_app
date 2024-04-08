@@ -11,6 +11,15 @@
         <meta name="author" content="" />
         <title>Register</title>
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script> <!-- jQuery Validate -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   
+        <script src="./admin_forms/register_validate.js"></script>
+
+
+        
+
         <script
             src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
             crossorigin="anonymous"
@@ -34,7 +43,7 @@
                                         </h3>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form id ="register_validate">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div
@@ -42,28 +51,24 @@
                                                     >
                                                         <input
                                                             class="form-control"
-                                                            id="inputFirstName"
+                                                            id="firstname"
+                                                            name="firstname"
                                                             type="text"
                                                             placeholder="Enter your first name"
                                                         />
-                                                        <label
-                                                            for="inputFirstName"
-                                                            >First name</label
-                                                        >
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input
                                                             class="form-control"
-                                                            id="inputLastName"
+                                                            name="lastname"
+                                                            id="lastname"
                                                             type="text"
                                                             placeholder="Enter your last name"
                                                         />
-                                                        <label
-                                                            for="inputLastName"
-                                                            >Last name</label
-                                                        >
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,14 +79,12 @@
                                                     >
                                                         <input
                                                             class="form-control"
-                                                            id="inputEmail"
+                                                            id="email"
+                                                            name="email"
                                                             type="email"
                                                             placeholder="name@example.com"
                                                         />
-                                                        <label for="inputEmail"
-                                                            >Email
-                                                            address</label
-                                                        >
+                                                      
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -90,24 +93,24 @@
                                                     >
                                                         <input
                                                             class="form-control"
-                                                            id="inputPassword"
+                                                            name="password"
+                                                            id="password"
                                                             type="password"
                                                             placeholder="Create a password"
                                                         />
-                                                        <label
-                                                            for="inputPassword"
-                                                            >Password</label
-                                                        >
+                                                      
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <a
+                                                    <button
                                                         class="btn btn-primary btn-block"
-                                                        href="login.html"
-                                                        >Create Account</a
-                                                    >
+                                                        type="submit"
+                                                        href="#"
+                                                        >Create Account</button>
+                                                    
                                                 </div>
                                             </div>
                                         </form>

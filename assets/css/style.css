@@ -213,6 +213,17 @@ li {
     -o-transition: all 0.5s ease;
 }
 
+label.error {
+
+    font-weight: 200;
+    display: block;
+    color:#f00;
+    font-size: 14px;
+
+
+}
+
+
 .section {
     padding: 100px 0;
 }

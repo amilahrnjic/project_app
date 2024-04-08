@@ -1,3 +1,4 @@
+/*
 (function($) {	
 	"use strict";	
 	
@@ -8,6 +9,7 @@
 		}
 	}	
 	
+	/*
 	//6.Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").click('click', function() {
@@ -18,8 +20,8 @@
 			 }, 1000);
 	
 		});
-	}
-
+	}  */
+/*
 	//20.Contact Form Validation
 	if($("#contact-form").length){
 	    $("#contact-form").validate({
@@ -43,8 +45,9 @@
 	          });
 	        }
 	    });
-	}
+	} */
 
+	/*
 	//22.Appoinment Form Validation
 	if($("#appoinment-form").length){
 	    $("#appoinment-form").validate({
@@ -68,9 +71,9 @@
 	          });
 	        }
 	    });
-	}
+	} */
 
-	//26.Date picker
+/*	//26.Date picker
 	function datepicker () {
 	    if ($('#datepicker').length) {
 	        $('#datepicker').datepicker();
@@ -88,6 +91,8 @@
 	        $(".selectmenu").selectmenu({ change: changeSelectMenu });
 	    };
 	}	
+
+	/*
 	
 	//28.Elements Animation
 	if($('.wow').length){
@@ -101,8 +106,9 @@
 		  }
 		);
 		wow.init();
-	}
+	}  */
 
+	/*
 	// Hero Slider
 	$('.hero-slider').slick({
 		slidesToShow: 1,
@@ -169,9 +175,11 @@
 			}
 		]
 	});
-	
+	*/
+
+	/*
 	// FancyBox Video
-	$('[data-fancybox]').fancybox({
+	$('[data-fancybox]').fancybox({  /*fancy box - da kad s epritisne na sliku prikaze se preko cijelog zaslona 
 		youtube: {
 			controls: 0,
 			showinfo: 0
@@ -179,10 +187,12 @@
 		vimeo: {
 			color: 'f00'
 		}
-	});
+	}); */
 
 /* ========================When document is loaded, do===================== */
-	$(window).on('load', function() {
+
+/*
+$(window).on('load', function() {
 		// add your functions
 		(function ($) {
 			handlePreloader();
@@ -191,4 +201,6 @@
 	});
 
 
-})(window.jQuery);
+
+
+})(window.jQuery);  */
