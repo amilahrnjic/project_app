@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Users - Admin</title>
+
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/spinkit.css" rel="stylesheet" />
+        <link href="../css/spapp.css" rel="stylesheet" />
+        <link href="../css/toastr.min.css" rel="stylesheet" />
+        <link href="../css/dataTables-latest.css" rel="stylesheet" />
+        <script src="../js/fontawesome.js"></script>
+    </head>
+
+    <body class="sb-nav-fixed">
+        <!-- Your navigation and layout code -->
+
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Users</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ol>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Users
+                    </div>
+                    <div class="card-body">
+                        <!--button-->
+                        <button
+                            type="button"
+                            class="btn btn-primary mb-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#add-user-modal"
+                        >
+                            Add User
+                        </button>
+
+                        <table id="users-datatable">
+                            <thead>
+                                <tr>
+                                    <th data-name="name">Name</th>
+                                    <th data-name="surname">Surname</th>
+                                    <th data-name="email">Email</th>
+                                    <th data-name="phone">Phone</th>
+                                    <th data-name="username">Username</th>
+                                    <th data-name="password">Password</th>
+                                    <th data-name="action">Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add User Modal -->
+        <div
+            class="modal fade"
+            id="add-user-modal"
+            tabindex="-1"
+            aria-labelledby="add-user-label"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add-user-label">
+                            Add User
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-user-form">
+                            <input type="hidden" id="id" name="id" />
+
+                            <div class="mb-3">
+                                <label for="firstname" class="form-label"
+                                    >Firstname</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="surname" class="form-label"
+                                    >Surname</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="surname"
+                                    name="surname"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label"
+                                    >Phone</label
+                                >
+                                <input
+                                    type="tel"
+                                    class="form-control"
+                                    id="phone"
+                                    name="phone"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label"
+                                    >Username</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    name="username"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label"
+                                    >Password</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    required
+                                />
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your other script includes -->
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/jquery-3.7.1-latest.js"></script>
+        <script src="../js/jquery.validate.min.js"></script>
+        <script src="../js/jquery.spapp.min.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="../js/block-ui.js"></script>
+        <script src="../js/toastr.min.js"></script>
+        <script src="../js/dataTables-latest.js"></script>
+
+        <script src="../services/users.js"></script>
+
+        <script src="../utils/utils.js"></script>
+        <script src="../utils/constants.js"></script>
+        <script src="../utils/form_validation.js"></script>
+        <script src="../utils/rest_client.js"></script>
+        <!--
+        <script>
+            async function fetchData() {
+                try {
+                    const response = await fetch(
+                        "../datajson_admin/users.json"
+                    );
+                    const data = await response.json();
+                    console.log("Fetched data:", data);
+                    return data;
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    return [];
+                }
+            }
+
+            function displayData() {
+                const tableBody = document.querySelector(
+                    "#users-datatable tbody"
+                );
+                fetchData().then((data) => {
+                    data.forEach((entry) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                        <td>${entry.name}</td>
+                        <td>${entry.surname}</td>
+                        <td>${entry.email}</td>
+                        <td>${entry.phone}</td>
+                        <td>${entry.username}</td>
+                        <td>${entry.password}</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn" onclick=""><i class="fa fa-pencil"></i></button>
+                                <button class="btn" onclick=""><i class="fa fa-trash"></i></button>
+                            </div>
+                        </td>
+                    `;
+                        tableBody.appendChild(row);
+                    });
+                });
+            }
+
+            // Delay execution of displayData by 100 milliseconds
+            setTimeout(displayData, 100);  -->
+
+        <script>
+            UserService.reload_users_datatable();
+            FormValidation.validate("#add-user-form", {}, function (data) {
+                Utils.block_ui("#add-user-modal");
+                $('#add-user-modal button[type="cancel"]').trigger("click");
+
+                $.post(Constants.API_BASE_URL + "add_user.php", data)
+                    .done(function (data) {
+                        console.log("S");
+                        Utils.unblock_ui("#add-user-modal");
+                        $("#add-user-modal").modal("toggle");
+                        toastr.success("You have successfully added the user.");
+                        UserService.reload_users_datatable();
+                    })
+                    .fail(function (xhr) {
+                        console.log("ih");
+                        toastr.error(error);
+                    });
+            });
+        </script>
+    </body>
+</html>

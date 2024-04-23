@@ -7,10 +7,10 @@
 		if($('.preloader').length){
 			$('.preloader').delay(200).fadeOut(500);
 		}
-	}	
+	}	*/
 	
-	/*
-	//6.Scroll to a Specific Div
+	
+	/*//6.Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").click('click', function() {
 			var target = $(this).attr('data-target');
@@ -73,13 +73,14 @@
 	    });
 	} */
 
-/*	//26.Date picker
+	/*
+	//26.Date picker
 	function datepicker () {
 	    if ($('#datepicker').length) {
 	        $('#datepicker').datepicker();
 	    };
-	}
-
+	} */
+ /*
 	//27.Select menu 
 	function selectDropdown() {
 	    if ($(".selectmenu").length) {
@@ -92,7 +93,7 @@
 	    };
 	}	
 
-	/*
+	
 	
 	//28.Elements Animation
 	if($('.wow').length){
@@ -106,9 +107,9 @@
 		  }
 		);
 		wow.init();
-	}  */
+	}  
 
-	/*
+	
 	// Hero Slider
 	$('.hero-slider').slick({
 		slidesToShow: 1,
@@ -175,11 +176,11 @@
 			}
 		]
 	});
-	*/
+	
 
-	/*
+	
 	// FancyBox Video
-	$('[data-fancybox]').fancybox({  /*fancy box - da kad s epritisne na sliku prikaze se preko cijelog zaslona 
+	$('[data-fancybox]').fancybox({  //fancy box - da kad s epritisne na sliku prikaze se preko cijelog zaslona 
 		youtube: {
 			controls: 0,
 			showinfo: 0

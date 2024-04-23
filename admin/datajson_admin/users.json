@@ -1,56 +1,57 @@
 [
     {
-        "id":1,
         "name": "John",
         "surname": "Doe",
         "email": "john.doe@example.com",
-        "phone": "(555) 123-4567"
+        "phone": "(555) 123-4567",
+        "username": "JohnDoe",
+        "password": "test123"
     },
 
     {
-        "id":2,
+        "id": 2,
         "name": "Jane",
         "surname": "Smith",
         "email": "jane.smith@example.com",
         "phone": "(555) 987-6543"
     },
     {
-        "id":3,
+        "id": 3,
         "name": "Jane",
         "surname": "Stone",
         "email": "jane.stone@example.com",
         "phone": "(555) 987-678"
     },
     {
-        "id":4,
+        "id": 4,
         "name": "Arnela",
         "surname": "Sokolic",
         "email": "arnela.smith@example.com",
         "phone": "(2345) 987-6543"
     },
     {
-        "id":5,
+        "id": 5,
         "name": "Lejla",
         "surname": "Hrnjic",
         "email": "lejla.smith@example.com",
         "phone": "(555) 999-6543"
     },
     {
-        "id":6,
+        "id": 6,
         "name": "Selma",
         "surname": "Smith",
         "email": "selma.smith@example.com",
         "phone": "(555) 9777-6543"
     },
     {
-        "id":7,
+        "id": 7,
         "name": "Zejna",
         "surname": "Hrnjic",
         "email": "zwjna.smith@example.com",
         "phone": "(555) 987-6543"
     },
     {
-        "id":8,
+        "id": 8,
         "name": "Amila",
         "surname": "Hrnjic",
         "email": "amila.smith@example.com",
