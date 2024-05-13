@@ -8,6 +8,7 @@ class UserService {
         $this->user_dao = new UserDao();
     }
     public function add_user($user){
+        $user['password'] = password_hash($user['password'], PASSWORD_BCRYPT);
         return $this->user_dao->add_user($user);
     }
     public function get_users_paginated($offset, $limit, $search, $order_column, $order_direction){
@@ -32,5 +33,10 @@ class UserService {
         unset($user['id']);
 
         $this->user_dao->edit_user($id, $user);
+    }
+
+    //swagger
+    public function get_all_users(){
+       return $this->user_dao->get_all_users();
     }
 }

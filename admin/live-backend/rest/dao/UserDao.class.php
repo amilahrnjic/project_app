@@ -71,4 +71,14 @@ class UserDao extends BaseDao {
             'id' => $id
         ]);
     }
+
+     //swagger
+    public function get_all_users(){
+        $query = "SELECT *
+                  FROM users;";
+            return $this->query($query,[]);
+
+    }
+
+   
 }

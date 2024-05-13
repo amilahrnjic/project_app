@@ -91,11 +91,8 @@
                     </div>
                     <div class="modal-body">
                         <form id="add-appointment-form">
-                            
                             <input type="hidden" id="id" name="id" />
                             <div class="mb-3">
-
-                                
                                 <label for="pet_id" class="form-label"
                                     >Pet ID</label
                                 >
@@ -133,7 +130,11 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
                                     Close
                                 </button>
 
@@ -220,7 +221,7 @@ setTimeout(displayData, 100);
                         "click"
                     );
 
-                    $.post(Constants.API_BASE_URL + "add_appointment.php", data)
+                    $.post(Constants.API_BASE_URL + "appointments/add", data)
                         .done(function (data) {
                             Utils.unblock_ui("#add-appointment-modal");
                             $("#add-appointment-modal").modal("toggle");

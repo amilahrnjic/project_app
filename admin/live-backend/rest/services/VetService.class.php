@@ -33,4 +33,9 @@ class VetService {
 
         $this->vet_dao->edit_vet($id, $vet);
     }
+
+    //swagger
+    public function get_all_vets(){
+        return $this->vet_dao->get_all_vets();
+     }
 }

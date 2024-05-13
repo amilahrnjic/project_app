@@ -67,4 +67,12 @@ class StationDao extends BaseDao {
             'id' => $id
         ]);
     }
+
+      //swagger
+      public function get_all_stations(){
+        $query = "SELECT *
+                  FROM stations;";
+            return $this->query($query,[]);
+
+    }
 }

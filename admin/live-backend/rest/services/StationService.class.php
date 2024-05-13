@@ -33,4 +33,9 @@ class StationService {
 
         $this->station_dao->edit_station($id, $station);
     }
+
+    //swagger
+    public function get_all_stations(){
+        return $this->station_dao->get_all_stations();
+     }
 }

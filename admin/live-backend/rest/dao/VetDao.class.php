@@ -74,4 +74,12 @@ class VetDao extends BaseDao {
             'id' => $id
         ]);
     }
+
+      //swagger
+      public function get_all_vets(){
+        $query = "SELECT *
+                  FROM vets;";
+            return $this->query($query,[]);
+
+    }
 }

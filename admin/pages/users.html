@@ -245,7 +245,7 @@
                 Utils.block_ui("#add-user-modal");
                 $('#add-user-modal button[type="cancel"]').trigger("click");
 
-                $.post(Constants.API_BASE_URL + "add_user.php", data)
+                $.post(Constants.API_BASE_URL + "users/add", data) //add_user.php
                     .done(function (data) {
                         console.log("S");
                         Utils.unblock_ui("#add-user-modal");
