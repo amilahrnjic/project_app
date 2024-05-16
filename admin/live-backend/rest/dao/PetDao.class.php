@@ -71,4 +71,12 @@ class PetDao extends BaseDao {
             'id' => $id
         ]);
     }
+
+      //swagger
+      public function get_all_pets(){
+        $query = "SELECT *
+                  FROM pets;";
+            return $this->query($query,[]);
+
+    }
 }

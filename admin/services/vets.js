@@ -2,7 +2,7 @@ var VetService = {
     reload_vets_datatable: function () {
         Utils.get_datatable(
             "vets-datatable",
-            Constants.API_BASE_URL + "get_vets.php",
+            Constants.API_BASE_URL + "vets/vets", //get_vets.php
             [
                 { data: "name" },
                 { data: "surname" },
@@ -17,7 +17,7 @@ var VetService = {
         );
     },
     open_edit_vet_modal: function (vet_id) {
-        RestClient.get("get_vet.php?id=" + vet_id, function (data) {
+        RestClient.get("vets/vet?vet_id=" + vet_id, function (data) {
             $("#add-vet-modal").modal("toggle");
             $("#add-vet-form input[name='id']").val(data.id);
             $("#add-vet-form input[name='name']").val(data.name);
@@ -36,7 +36,7 @@ var VetService = {
             true
         ) {
             RestClient.delete(
-                "delete_vet.php?id=" + vet_id,
+                "vets/delete/" + vet_id, //delete_vet.php?id
                 {},
                 function (data) {
                     VetService.reload_vets_datatable();

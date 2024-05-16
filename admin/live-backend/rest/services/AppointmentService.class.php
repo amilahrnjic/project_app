@@ -33,4 +33,8 @@ class AppointmentService {
 
         $this->appointment_dao->edit_appointment($id, $appointment);
     }
+    //swagger
+    public function get_all_appointments(){
+        return $this->appointment_dao->get_all_appointments();
+     }
 }

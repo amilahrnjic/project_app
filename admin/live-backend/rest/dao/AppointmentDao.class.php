@@ -68,4 +68,12 @@ class AppointmentDao extends BaseDao {
             'id' => $id
         ]);
     }
+
+      //swagger
+      public function get_all_appointments(){
+        $query = "SELECT *
+                  FROM appointments;";
+            return $this->query($query,[]);
+
+    }
 }

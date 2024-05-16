@@ -174,7 +174,7 @@
             FormValidation.validate("#add-station-form", {}, function (data) {
                 Utils.block_ui("#add-station-modal");
                 $('#add-station-modal button[type="cancel"]').trigger("click");
-                $.post(Constants.API_BASE_URL + "add_station.php", data)
+                $.post(Constants.API_BASE_URL + "stations/add", data)
                     .done(function (data) {
                         console.log("S");
                         Utils.unblock_ui("#add-station-modal");

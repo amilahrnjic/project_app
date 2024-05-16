@@ -231,7 +231,7 @@
                 Utils.block_ui("#add-vet-modal");
                 $('#add-vet-modal button[type="cancel"]').trigger("click");
 
-                $.post(Constants.API_BASE_URL + "add_vet.php", data)
+                $.post(Constants.API_BASE_URL + "vets/add", data) //add_vet.php
                     .done(function (data) {
                         Utils.unblock_ui("#add-vet-modal");
                         $("#add-vet-modal").modal("toggle");

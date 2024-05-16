@@ -141,7 +141,7 @@
                 Utils.block_ui("#add-pet-modal");
                 $('#add-pet-modal button[type="cancel"]').trigger("click");
     
-                $.post(Constants.API_BASE_URL + "add_pet.php", data)
+                $.post(Constants.API_BASE_URL + "pets/add", data)  //add
                     .done(function (data) {
                         Utils.unblock_ui("#add-pet-modal");
                         $("#add-pet-modal").modal("toggle");

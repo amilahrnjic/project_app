@@ -2,7 +2,7 @@ var StationService = {
     reload_stations_datatable: function () {
         Utils.get_datatable(
             "stations-datatable",
-            Constants.API_BASE_URL + "get_stations.php",
+            Constants.API_BASE_URL + "stations/stations",
             [
                 { data: "name" },
                 { data: "address" },
@@ -13,7 +13,7 @@ var StationService = {
         );
     },
     open_edit_station_modal: function (station_id) {
-        RestClient.get("get_station.php?id=" + station_id, function (data) {
+        RestClient.get("stations/station?station_id=" + station_id, function (data) {
             $("#add-station-modal").modal("toggle");
             $("#add-station-form input[name='id']").val(data.id);
             $("#add-station-form input[name='name']").val(data.name);
@@ -31,7 +31,7 @@ var StationService = {
             ) == true
         ) {
             RestClient.delete(
-                "delete_station.php?id=" + station_id,
+                "stations/delete/" + station_id,
                 {},
                 function (data) {
                     StationService.reload_stations_datatable();

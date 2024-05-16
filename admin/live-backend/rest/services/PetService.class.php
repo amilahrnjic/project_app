@@ -33,4 +33,11 @@ class PetService {
 
         $this->pet_dao->edit_pet($id, $pet);
     }
+
+    //swagger
+    public function get_all_pets(){
+        return $this->pet_dao->get_all_pets();
+     }
+
+
 }
