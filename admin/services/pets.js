@@ -2,7 +2,7 @@ var PetService = {
     reload_pets_datatable: function () {
         Utils.get_datatable(
             "pets-datatable",
-            Constants.API_BASE_URL + "pets/pets",
+            Constants.get_api_base_url()+ "pets/pets",
             [
                 { data: "name" },
                 { data: "user_id" },

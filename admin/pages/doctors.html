@@ -10,24 +10,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Doctors - Admin</title>
-
-        <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/spinkit.css" rel="stylesheet" />
-        <link href="../css/spapp.css" rel="stylesheet" />
-        <link href="../css/toastr.min.css" rel="stylesheet" />
-        <link href="../css/dataTables-latest.css" rel="stylesheet" />
-        <script src="../js/fontawesome.js"></script>
     </head>
-
     <body class="sb-nav-fixed">
-        <!-- Your navigation and layout code -->
-
-        <main>
+        <main id="main-content">
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Doctors</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item">
-                        <a href="index.html">Dashboard</a>
+                        <a href="#dashboard">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">Doctors</li>
                 </ol>
@@ -53,11 +43,11 @@
                                     <th data-name="name">Name</th>
                                     <th data-name="surname">Surname</th>
                                     <th data-name="email">Email</th>
-                                    <th data-name="address">Address</th>
+                                    <th data-name="phone">Phone</th>
                                     <th data-name="username">Username</th>
                                     <th data-name="password">Password</th>
-                                    <th data-name="approved">Approved</th>
-                                    <th data-name="station_id">Station_id</th>
+                                    <th data-name="address">Address</th>
+                                    <th data-name="profession">Profession</th>
                                     <th data-name="action">Actions</th>
                                 </tr>
                             </thead>
@@ -194,7 +184,11 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
                                     Close
                                 </button>
 
@@ -208,39 +202,27 @@
             </div>
         </div>
 
-        <!-- Your other script includes -->
-        <script src="../js/bootstrap.bundle.min.js"></script>
-        <script src="../js/jquery-3.7.1-latest.js"></script>
-        <script src="../js/jquery.validate.min.js"></script>
-        <script src="../js/jquery.spapp.min.js"></script>
-        <script src="../js/scripts.js"></script>
-        <script src="../js/block-ui.js"></script>
-        <script src="../js/toastr.min.js"></script>
-        <script src="../js/dataTables-latest.js"></script>
-
-        <script src="../services/vets.js"></script>
-
-        <script src="../utils/utils.js"></script>
-        <script src="../utils/constants.js"></script>
-        <script src="../utils/form_validation.js"></script>
-        <script src="../utils/rest_client.js"></script>
-
         <script>
             VetService.reload_vets_datatable();
             FormValidation.validate("#add-vet-form", {}, function (data) {
                 Utils.block_ui("#add-vet-modal");
-                $('#add-vet-modal button[type="cancel"]').trigger("click");
 
-                $.post(Constants.API_BASE_URL + "vets/add", data) //add_vet.php
-                    .done(function (data) {
+                RestClient.post(
+                    "vets/add",
+                    data,
+                    function (response) {
                         Utils.unblock_ui("#add-vet-modal");
                         $("#add-vet-modal").modal("toggle");
-                        toastr.success("You have successfully added the vet.");
+                        toastr.success(
+                            "You have successfully added the doctor."
+                        );
                         VetService.reload_vets_datatable();
-                    })
-                    .fail(function (xhr) {
-                        toastr.error(error);
-                    });
+                    },
+                    function (xhr) {
+                        Utils.unblock_ui("#add-vet-modal");
+                        toastr.error(xhr);
+                    }
+                );
             });
         </script>
     </body>

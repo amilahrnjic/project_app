@@ -1,61 +1,61 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#register_validate").validate({
         // Validation rules and messages
         rules: {
-            'firstname': {
+            firstname: {
                 required: true,
-                minlength: 3
+                minlength: 3,
             },
-            'lastname': {
+            lastname: {
                 required: true,
-                minlength: 3
+                minlength: 3,
             },
-            'email': {
+            email: {
                 required: true,
-                email: true
+                email: true,
             },
-            'password': {
+            password: {
                 required: true,
-                minlength: 8
-            }
+                minlength: 8,
+            },
         },
         messages: {
-            'firstname': {
+            firstname: {
                 required: "Please enter your first name",
-                minlength: "First name must be at least 3 characters"
+                minlength: "First name must be at least 3 characters",
             },
-            'lastname': {
+            lastname: {
                 required: "Please enter your last name",
-                minlength: "Last name must be at least 3 characters"
+                minlength: "Last name must be at least 3 characters",
             },
-            'email': {
+            email: {
                 required: "Please enter your email",
-                email: "Please enter a valid email address"
+                email: "Please enter a valid email address",
             },
-            'password': {
+            password: {
                 required: "Please enter your password",
-                minlength: "Password must be at least 8 characters"
-            }
+                minlength: "Password must be at least 8 characters",
+            },
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             // Handle form submission
             const formData = {
-                firstname: $('#firstname').val(),
-                lastname: $('#lastname').val(),
-                email: $('#email').val(),
-                password: $('#password').val()
+                firstname: $("#firstname").val(),
+                lastname: $("#lastname").val(),
+                email: $("#email").val(),
+                password: $("#password").val(),
             };
             saveData(formData); // Save data to local storage
             form.reset(); // Reset form
-            alert('Account created successfully!');
-            window.location.href = "login.html";
+            alert("Account created successfully!");
+            window.location.href = "/project_final/admin/live-backend/login/";
             return false; // Prevent form submission
-        }
+        },
     });
 
     // Function to retrieve data from local storage
     function retrieveData() {
-        const storedData = localStorage.getItem('userRegister');
+        const storedData = localStorage.getItem("userRegister");
         return storedData ? JSON.parse(storedData) : [];
     }
 
@@ -63,6 +63,6 @@ $(document).ready(function() {
     function saveData(data) {
         const storedData = retrieveData();
         storedData.push(data);
-        localStorage.setItem('userRegister', JSON.stringify(storedData));
+        localStorage.setItem("userRegister", JSON.stringify(storedData));
     }
 });

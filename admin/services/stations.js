@@ -2,7 +2,7 @@ var StationService = {
     reload_stations_datatable: function () {
         Utils.get_datatable(
             "stations-datatable",
-            Constants.API_BASE_URL + "stations/stations",
+            Constants.get_api_base_url() + "stations/stations",
             [
                 { data: "name" },
                 { data: "address" },

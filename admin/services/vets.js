@@ -2,7 +2,7 @@ var VetService = {
     reload_vets_datatable: function () {
         Utils.get_datatable(
             "vets-datatable",
-            Constants.API_BASE_URL + "vets/vets", //get_vets.php
+            Constants.get_api_base_url() + "vets/vets", //get_vets.php
             [
                 { data: "name" },
                 { data: "surname" },

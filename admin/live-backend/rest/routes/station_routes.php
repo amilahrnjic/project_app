@@ -23,6 +23,9 @@ Flight::group ('/stations', function () {
  *   path="/stations/all",
  *   tags = {"stations"},
  *   summary="Get all stations", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Array of the all stations in the database"
@@ -44,6 +47,9 @@ Flight::route('GET /all', function () {
  *   path="/stations/station",
  *   tags = {"stations"},
  *   summary="Get station by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Station data or false if station does not exist"
@@ -67,6 +73,9 @@ Flight::route('GET /all', function () {
  *   path="/stations/get/{station_id}",
  *   tags = {"stations"},
  *   summary="Get station by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Station data or false if station does not exist"
@@ -134,6 +143,9 @@ Flight::route('GET /stations', function () {
  *   path="/stations/add",
  *   tags = {"stations"},
  *   summary="Add station data to the database", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Station data or exception if station is not addedd properly."
@@ -190,6 +202,9 @@ Flight::json (['message' => "You have successfully added the station", 'data' =>
  *   path="/stations/delete/{station_id}",
  *   tags = {"stations"},
  *   summary="Delete station by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Deleted station data or 500 status code exception otherwise"

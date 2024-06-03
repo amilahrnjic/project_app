@@ -25,6 +25,9 @@ Flight::group ('/appointments', function () {
  *   path="/appointments/all",
  *   tags = {"appointments"},
  *   summary="Get all appointments", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Array of the all appointments in the database"
@@ -47,6 +50,9 @@ Flight::route('GET /all', function () {
  *   path="/appointments/appointment",
  *   tags = {"appointments"},
  *   summary="Get appointment by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Appointment data or false if appointment does not exist"
@@ -70,6 +76,9 @@ Flight::route('GET /all', function () {
  *   path="/appointments/get/{appointment_id}",
  *   tags = {"appointments"},
  *   summary="Get appointment by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Appointment data or false if appointment does not exist"
@@ -136,6 +145,9 @@ Flight::route('GET /appointments', function () {
  *   path="/appointments/add",
  *   tags = {"appointments"},
  *   summary="Add appointment data to the database", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Appointment data or exception if appointment is not addedd properly."
@@ -194,6 +206,9 @@ Flight:: route('POST /add', function(){
  *   path="/appointments/delete/{appointment_id}",
  *   tags = {"appointments"},
  *   summary="Delete user by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Deleted appointment data or 500 status code exception otherwise"

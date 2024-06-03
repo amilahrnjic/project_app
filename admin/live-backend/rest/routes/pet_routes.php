@@ -22,6 +22,9 @@ Flight::group ('/pets', function () {
  *   path="/pets/all",
  *   tags = {"pets"},
  *   summary="Get all pets", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Array of the all pets in the database"
@@ -44,6 +47,9 @@ Flight::group ('/pets', function () {
  *   path="/pets/pet",
  *   tags = {"pets"},
  *   summary="Get pet by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Pet data or false if pet does not exist"
@@ -67,7 +73,10 @@ Flight::group ('/pets', function () {
  * @OA\Get(
  *   path="/pets/get/{pet_id}",
  *   tags = {"pets"},
- *   summary="Get pet by id", 
+ *   summary="Get pet by id",
+ *  security={
+     *          {"ApiKey": {}}   
+     *      }, 
  *   @OA\Response(
  *     response=200,
  *     description="Pet data or false if pet does not exist"
@@ -138,6 +147,9 @@ Flight::route('GET /pets', function () {
  *   path="/pets/add",
  *   tags = {"pets"},
  *   summary="Add pet data to the database", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Pet data or exception if pet is not addedd properly."
@@ -198,6 +210,9 @@ Flight::json (['message' => "You have successfully added the pet", 'data' => $pe
  *   path="/pets/delete/{pet_id}",
  *   tags = {"pets"},
  *   summary="Delete pet by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Deleted pet data or 500 status code exception otherwise"

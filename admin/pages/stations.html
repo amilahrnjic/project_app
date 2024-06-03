@@ -10,13 +10,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Stations - Admin</title>
-
-        <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/spinkit.css" rel="stylesheet" />
-        <link href="../css/spapp.css" rel="stylesheet" />
-        <link href="../css/toastr.min.css" rel="stylesheet" />
-        <link href="../css/dataTables-latest.css" rel="stylesheet" />
-        <script src="../js/fontawesome.js"></script>
     </head>
 
     <body class="sb-nav-fixed">
@@ -27,7 +20,7 @@
                 <h1 class="mt-4">Stations</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item">
-                        <a href="index.html">Dashboard</a>
+                        <a href="#dashboard">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">Stations</li>
                 </ol>
@@ -138,10 +131,13 @@
                                 ></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
                                     Close
                                 </button>
-
                                 <button type="submit" class="btn btn-primary">
                                     Save
                                 </button>
@@ -152,86 +148,69 @@
             </div>
         </div>
 
-        <script src="../js/bootstrap.bundle.min.js"></script>
-        <script src="../js/jquery-3.7.1-latest.js"></script>
-        <script src="../js/jquery.validate.min.js"></script>
-        <script src="../js/jquery.spapp.min.js"></script>
-        <script src="../js/scripts.js"></script>
-        <script src="../js/block-ui.js"></script>
-        <script src="../js/toastr.min.js"></script>
-        <script src="../js/dataTables-latest.js"></script>
-
-        <script src="../services/stations.js"></script>
-
-        <script src="../utils/utils.js"></script>
-        <script src="../utils/constants.js"></script>
-        <script src="../utils/form_validation.js"></script>
-        <script src="../utils/rest_client.js"></script>
-
         <script>
             StationService.reload_stations_datatable();
-            console.log(Constants.API_BASE_URL);
             FormValidation.validate("#add-station-form", {}, function (data) {
                 Utils.block_ui("#add-station-modal");
-                $('#add-station-modal button[type="cancel"]').trigger("click");
-                $.post(Constants.API_BASE_URL + "stations/add", data)
-                    .done(function (data) {
-                        console.log("S");
+
+                RestClient.post(
+                    "stations/add",
+                    data,
+                    function (response) {
                         Utils.unblock_ui("#add-station-modal");
                         $("#add-station-modal").modal("toggle");
                         toastr.success(
                             "You have successfully added the station."
                         );
                         StationService.reload_stations_datatable();
-                    })
-                    .fail(function (xhr) {
-                        console.log("ih");
-                        toastr.error(error);
-                    });
+                    },
+                    function (xhr) {
+                        Utils.unblock_ui("#add-station-modal");
+                        toastr.error(xhr);
+                    }
+                );
+            });
+
+            $(document).ready(function () {
+                // Fetch and display data
+                // async function fetchData() {
+                //     try {
+                //         const response = await fetch(
+                //             "../datajson_admin/stations.json"
+                //         );
+                //         const data = await response.json();
+                //         return data;
+                //     } catch (error) {
+                //         console.error("Error fetching data:", error);
+                //         return [];
+                //     }
+                // }
+                // function displayData() {
+                //     const tableBody = document.querySelector(
+                //         "#stations-datatable tbody"
+                //     );
+                //     fetchData().then((data) => {
+                //         data.forEach((entry) => {
+                //             const row = document.createElement("tr");
+                //             row.innerHTML = `
+                //             <td>${entry.name}</td>
+                //             <td>${entry.address}</td>
+                //             <td>${entry.phone}</td>
+                //             <td>${entry.description}</td>
+                //             <td>
+                //                 <div class="d-flex gap-2">
+                //                     <a href="#"><i class="fa fa-pencil"></i></a>
+                //                     <a href="#"><i class="fa fa-trash"></i></a>
+                //                 </div>
+                //             </td>
+                //         `;
+                //             tableBody.appendChild(row);
+                //         });
+                //     });
+                // }
+                // // Delay execution of displayData by 100 milliseconds
+                // setTimeout(displayData, 100);
             });
         </script>
-
-        <!-- Script to fetch and display data -->
-        <!-- Script to fetch and display data -->
-        <!-- 
- <script>
-    async function fetchData() {
-try {
-    const response = await fetch('../datajson_admin/stations.json');
-    const data = await response.json();
-    console.log('Fetched data:', data);
-    return data;
-} catch (error) {
-    console.error('Error fetching data:', error);
-    return [];
-}
-}
-
-function displayData() {
-const tableBody = document.querySelector('#stations-datatable tbody');
-fetchData().then(data => {
-    data.forEach(entry => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${entry.id}</td>
-            <td>${entry.name}</td>
-            <td>${entry.address}</td>
-            <td>${entry.phone}</td>
-            <td>${entry.description}</td>
-            <td>
-                <div class="d-flex gap-2">
-                    <a href=""><i class="fa fa-pencil"></i></a>
-                    <a href=""><i class="fa fa-trash"></i></a>
-                </div>
-            </td>
-        `;
-        tableBody.appendChild(row);
-    });
-});
-}
-
-// Delay execution of displayData by 100 milliseconds
-setTimeout(displayData, 100);
-</script> -->
     </body>
 </html>

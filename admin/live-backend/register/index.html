@@ -10,16 +10,17 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Register</title>
-        <link href="../css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script> <!-- jQuery Validate -->
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-   
-        <script src="../admin_forms/register_validate.js"></script>
+        <link href="../assets/css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+        <!-- jQuery Validate -->
+        <link
+            rel="stylesheet"
+            href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+        />
 
-
-        
-
+        <!-- <script src="../../admin_forms/register_validate.js"></script> -->
         <script
             src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
             crossorigin="anonymous"
@@ -43,7 +44,7 @@
                                         </h3>
                                     </div>
                                     <div class="card-body">
-                                        <form id ="register_validate">
+                                        <form id="register_validate">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div
@@ -56,7 +57,9 @@
                                                             type="text"
                                                             placeholder="Enter your first name"
                                                         />
-                                                       
+                                                        <label for="firstname"
+                                                            >First Name</label
+                                                        >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -68,7 +71,27 @@
                                                             type="text"
                                                             placeholder="Enter your last name"
                                                         />
-                                                       
+                                                        <label for="lastname"
+                                                            >Last Name</label
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div
+                                                        class="form-floating mb-3"
+                                                    >
+                                                        <input
+                                                            class="form-control"
+                                                            id="phone"
+                                                            name="phone"
+                                                            type="phone"
+                                                            placeholder="123-456-789"
+                                                        />
+                                                        <label for="email"
+                                                            >Phone</label
+                                                        >
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,7 +107,9 @@
                                                             type="email"
                                                             placeholder="name@example.com"
                                                         />
-                                                      
+                                                        <label for="email"
+                                                            >Email</label
+                                                        >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -98,8 +123,9 @@
                                                             type="password"
                                                             placeholder="Create a password"
                                                         />
-                                                      
-                                                        
+                                                        <label for="password"
+                                                            >Password</label
+                                                        >
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,16 +134,17 @@
                                                     <button
                                                         class="btn btn-primary btn-block"
                                                         type="submit"
-                                                        href="#"
-                                                        >Create Account</button>
-                                                    
+                                                    >
+                                                        Create Account
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small">
-                                            <a href="login.html"
+                                            <a
+                                                href="/project_final/admin/live-backend/login/"
                                                 >Have an account? Go to login</a
                                             >
                                         </div>
@@ -129,10 +156,56 @@
                 </main>
             </div>
         </div>
+
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             crossorigin="anonymous"
         ></script>
-        <script src="../js/scripts.js"></script>
+        <script src="../assets/js/scripts.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#register_validate").validate({
+                    // Your validation rules can go here
+                    submitHandler: function (form) {
+                        var userData = {
+                            firstname: $("#firstname").val(),
+                            lastname: $("#lastname").val(),
+                            phone: $("#phone").val(),
+                            email: $("#email").val(),
+                            password: $("#password").val(),
+                        };
+
+                        $.post(
+                            Constants.get_api_base_url() + "users/register",
+                            userData
+                        )
+                            .done(function (data) {
+                                toastr.success(
+                                    "You have successfully added the user."
+                                );
+                                // You may perform additional actions upon successful addition of the user
+                                window.location.href =
+                                    "/project_final/admin/live-backend/login/";
+                            })
+                            .fail(function (xhr) {
+                                toastr.error("Error: " + xhr.responseText);
+                            });
+                    },
+                });
+            });
+        </script>
+
+        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/js/block-ui.js"></script>
+        <script src="../assets/js/toastr.min.js"></script>
+        <script src="../assets/js/dataTables-latest.js"></script>
+
+        <script src="../utils/utils.js"></script>
+        <script src="../utils/constants.js"></script>
+        <script src="../utils/form_validation.js"></script>
+        <script src="../utils/rest_client.js"></script>
+
+        <script src="../../services/users.js"></script>
     </body>
 </html>
