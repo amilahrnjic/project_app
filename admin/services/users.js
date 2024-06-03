@@ -3,7 +3,7 @@ var UserService = {
         Utils.get_datatable(
             "users-datatable",
             //  Constants.API_BASE_URL + "get_users.php",
-            Constants.API_BASE_URL + "users/users",
+            Constants.get_api_base_url() + "users/users",
             [
                 { data: "name" },
                 { data: "surname" },
@@ -46,4 +46,24 @@ var UserService = {
             );
         }
     },
+
+
+    //NEW function for register user
+    register_user: function () {
+        var user = {
+            firstname: $("#register-form input[name='firstname']").val(),
+            lastname: $("#register-form input[name='lastname']").val(),
+            email: $("#register-form input[name='email']").val(),
+            password: $("#register-form input[name='password']").val()
+        };
+
+        RestClient.post("users/register", user, function (data) {
+            alert(data.message);
+            // Optionally, you can redirect the user or clear the form here
+            $("#register-form")[0].reset();
+        }, function (error) {
+            alert("Error: " + error.responseText);
+        });
+    },
+
 };

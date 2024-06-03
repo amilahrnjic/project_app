@@ -1,90 +1,91 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#form-doctor").validate({
         rules: {
-            'Name': { // Use name attribute here
+            Name: {
+                // Use name attribute here
                 required: true,
-                minlength: 3
+                minlength: 3,
             },
-            'Email': {
+            Email: {
                 required: true,
-                email: true
+                email: true,
             },
-            'UserName': {
-                required: true
-            },
-            'Address': {
-                required: true
-            },
-            'Surname': {
+            UserName: {
                 required: true,
-                minlength: 3
             },
-            'Phone': {
+            Address: {
+                required: true,
+            },
+            Surname: {
+                required: true,
+                minlength: 3,
+            },
+            Phone: {
                 required: true,
                 number: true,
-                minlength: 9
+                minlength: 9,
             },
-            'Password': {
+            Password: {
                 required: true,
-                minlength:8
+                minlength: 8,
             },
-            'Profession': {
-                required: true
-            }
+            Profession: {
+                required: true,
+            },
         },
         messages: {
-            'Name': {
+            Name: {
                 required: "Please enter your name",
-                minlength: "Name must be at least 3 characters"
+                minlength: "Name must be at least 3 characters",
             },
-            'Email': {
+            Email: {
                 required: "Please enter your email",
-                email: "Please enter a valid email address"
+                email: "Please enter a valid email address",
             },
-            'UserName': {
-                required: "Please enter your username"
+            UserName: {
+                required: "Please enter your username",
             },
-            'Address': {
-                required: "Please enter your address"
+            Address: {
+                required: "Please enter your address",
             },
-            'Surname': {
+            Surname: {
                 required: "Please enter your surname",
-                minlength: "Surname must be at least 3 characters"
+                minlength: "Surname must be at least 3 characters",
             },
-            'Phone': {
+            Phone: {
                 required: "Please enter your phone number",
                 number: "Please enter a valid phone number",
-                minlength: "Phone number must be at least 9 characters"
+                minlength: "Phone number must be at least 9 characters",
             },
-            'Password': {
+            Password: {
                 required: "Please enter your password",
-                minlength: "Password must be at least 8 characters"
+                minlength: "Password must be at least 8 characters",
             },
-            'Profession': {
-                required: "Please enter profession"
-            }
+            Profession: {
+                required: "Please enter profession",
+            },
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             const formData = {
-                name: $('#doctor-name').val(),
-                email: $('#doctor-email').val(),
-                username: $('#doctor-username').val(),
-                address: $('#doctor-address').val(),
-                surname: $('#doctor-surname').val(),
-                phone: $('#doctor-phone').val(),
-                password: $('#doctor-password').val(),
-                profession: $('#doctor-profession').val()
+                name: $("#doctor-name").val(),
+                email: $("#doctor-email").val(),
+                username: $("#doctor-username").val(),
+                address: $("#doctor-address").val(),
+                surname: $("#doctor-surname").val(),
+                phone: $("#doctor-phone").val(),
+                password: $("#doctor-password").val(),
+                profession: $("#doctor-profession").val(),
             };
             saveData(formData); // Save data to local storage
             form.reset(); // Reset form
-            alert('Data submitted successfully!');
+            alert("Data submitted successfully!");
             return false; // Prevent form submission
-        }
+        },
     });
 
     // Function to retrieve data from local storage
     function retrieveData() {
-        const storedData = localStorage.getItem('doctorData');
+        const storedData = localStorage.getItem("doctorData");
         return storedData ? JSON.parse(storedData) : [];
     }
 
@@ -92,6 +93,6 @@ $(document).ready(function() {
     function saveData(data) {
         const storedData = retrieveData();
         storedData.push(data);
-        localStorage.setItem('doctorData', JSON.stringify(storedData));
+        localStorage.setItem("doctorData", JSON.stringify(storedData));
     }
 });

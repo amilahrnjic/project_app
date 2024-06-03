@@ -1,6 +1,8 @@
 <?php
 
 require  './vendor/autoload.php';
+
+require './rest/routes/middleware_routes.php';
 require './rest/routes/user_routes.php';
 require './rest/routes/vet_routes.php';
 require './rest/routes/pet_routes.php';

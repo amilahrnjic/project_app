@@ -12,15 +12,20 @@ var AppointmentService = {
         );
     },
     open_edit_appointment_modal: function (appointment_id) {
-        RestClient.get("appointments/appointment?appointment_id=" + appointment_id, function (data) {
-            $("#add-appointment-modal").modal("toggle");
-            $("#add-appointment-form input[name='id']").val(data.id);
-            $("#add-appointment-form input[name='pet_id']").val(data.pet_id);
-            $("#add-appointment-form input[name='doctor_id']").val(
-                data.doctor_id
-            );
-            $("#add-appointment-form input[name='date']").val(data.date);
-        });
+        RestClient.get(
+            "appointments/appointment?appointment_id=" + appointment_id,
+            function (data) {
+                $("#add-appointment-modal").modal("toggle");
+                $("#add-appointment-form input[name='id']").val(data.id);
+                $("#add-appointment-form input[name='pet_id']").val(
+                    data.pet_id
+                );
+                $("#add-appointment-form input[name='doctor_id']").val(
+                    data.doctor_id
+                );
+                $("#add-appointment-form input[name='date']").val(data.date);
+            }
+        );
     },
     delete_appointment: function (appointment_id) {
         if (

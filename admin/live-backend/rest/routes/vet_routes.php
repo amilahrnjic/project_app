@@ -12,6 +12,9 @@ Flight::group ('/vets', function () {
  *   path="/vets/all",
  *   tags = {"vets"},
  *   summary="Get all vets", 
+ *  security={
+ *      {"ApiKey": {}}   
+*      },
  *   @OA\Response(
  *     response=200,
  *     description="Array of the all vets in the database"
@@ -34,6 +37,9 @@ Flight::route('GET /all', function () {
  *   path="/vets/vet",
  *   tags = {"vets"},
  *   summary="Get vet by id", 
+ *  security={
+*          {"ApiKey": {}}   
+*      },
  *   @OA\Response(
  *     response=200,
  *     description="Vet data or false if vet does not exist"
@@ -58,6 +64,9 @@ Flight::route('GET /all', function () {
  *   path="/vets/get/{vet_id}",
  *   tags = {"vets"},
  *   summary="Get vet by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Vet data or false if vet does not exist"
@@ -123,6 +132,9 @@ Flight::route('GET /vets', function () {
  *   path="/vets/add",
  *   tags = {"vets"},
  *   summary="Add vet data to the database", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Vet data or exception if vet is not addedd properly."
@@ -185,6 +197,9 @@ Flight:: route('POST /add', function(){
  *   path="/vets/delete/{vet_id}",
  *   tags = {"vets"},
  *   summary="Delete vet by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Deleted vet data or 500 status code exception otherwise"
@@ -219,4 +234,26 @@ Flight:: route('POST /add', function(){
         Flight::json($vet, 200);
     });
     
+
+/* Da lii se na svakom treba prikazati npr user sa kojim smo se ulogovali ? */
+
+/**
+     * @OA\Get(
+     *      path="/vets/info",
+     *      tags={"vets"},
+     *      summary="Get logged in vet infromation",
+     *      security={
+     *          {"ApiKey": {}}   
+     *      },
+     *      @OA\Response(
+     *           response=200,
+     *           description="Vets data, or false if vet does not exist"
+     *      )
+     * )
+     */
+    Flight::route('GET /info', function() {
+        Flight::json(Flight::get('user'));
+    });
+
+
 });

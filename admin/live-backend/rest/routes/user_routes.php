@@ -12,8 +12,10 @@
 // Include the UserService class
 require_once __DIR__ . '/../services/UserService.class.php';
 
+
 // Set up the user service
 Flight::set('user_service', new UserService());
+
 
 //dodala ovaj dio kao kod prof - zatvara se na kraju
 
@@ -26,6 +28,9 @@ Flight::group ('/users', function () {
  *   path="/users/all",
  *   tags = {"users"},
  *   summary="Get all users", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Array of the all users in the database"
@@ -46,6 +51,9 @@ Flight::route('GET /all', function () {
  *   path="/users/user",
  *   tags = {"users"},
  *   summary="Get user by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="User data or false if user does not exist"
@@ -70,6 +78,9 @@ Flight::route('GET /user',function(){
  *   path="/users/get/{user_id}",
  *   tags = {"users"},
  *   summary="Get user by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="User data or false if user does not exist"
@@ -137,6 +148,9 @@ Flight::route('GET /users', function () {
  *   path="/users/add",
  *   tags = {"users"},
  *   summary="Add user data to the database", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="User data or exception if user is not addedd properly."
@@ -163,31 +177,59 @@ Flight::route('GET /users', function () {
  /* POST /users/add */
 
 Flight:: route('POST /add', function(){
+    //$payload = $_REQUEST;
+    $payload = Flight::request()->data->getData(); // to get json data 
 
-    
-//$payload = $_REQUEST;
+    if($payload['name'] == NULL || $payload['name'] == '') {
+    // header('HTTP/1.1 500 Bad Request');
+        //die(json_encode(['error' => "First name field is missing"]));
+        Flight::halt(500, "First name field is missing"); //this method is used for exception
+    }
 
-$payload = Flight::request()->data->getData(); // to get json data 
+    //in set function we set global variable
+    //$user_service = new UserService();
 
-if($payload['name'] == NULL || $payload['name'] == '') {
-   // header('HTTP/1.1 500 Bad Request');
-    //die(json_encode(['error' => "First name field is missing"]));
-    Flight::halt(500, "First name field is missing"); //this method is used for exception
-}
+    if($payload['id'] != NULL && $payload['id'] != ''){
+        $user = Flight::get('user_service')->edit_user($payload);
+    } else {
+        unset($payload['id']);
+        $user = Flight::get('user_service')->add_user($payload);
+    }
 
-//in set function we set global variable
-//$user_service = new UserService();
-
-if($payload['id'] != NULL && $payload['id'] != ''){
-    $user = Flight::get('user_service')->edit_user($payload);
-} else {
-    unset($payload['id']);
-    $user = Flight::get('user_service')->add_user($payload);
-}
-
-//echo json_encode(['message' => "You have successfully added the user", 'data' => $user]);
-Flight::json (['message' => "You have successfully added the user", 'data' => $user]);
+    //echo json_encode(['message' => "You have successfully added the user", 'data' => $user]);
+    Flight::json (['message' => "You have successfully added the user", 'data' => $user]);
 });
+
+
+
+//new route - for REGISTER
+
+Flight::route('POST /register', function () {
+    $payload = Flight::request()->data->getData();
+
+    if (empty($payload['email']) || empty($payload['password']) || empty($payload['phone'])) {
+        Flight::halt(400, "All fields are required.");
+    }
+
+    $user = [
+        'name' => $payload['firstname'],
+        'surname' => $payload['lastname'],
+        'email' => $payload['email'],
+        'phone' => $payload['phone'],
+        'username' => $payload['firstname'] . $payload['lastname'],
+        'password' => $payload['password']
+    ];
+
+    try {
+        $user_service = Flight::get('user_service');
+        $new_user = $user_service->add_user($user);
+        Flight::json(['message' => 'User registered successfully', 'data' => $new_user], 200);
+    } catch (Exception $e) {
+        Flight::halt(500, 'Error: ' . $e->getMessage());
+    }
+});
+
+
 
 //users/delete/15 - this is route parameter
 //user_id = 15
@@ -197,6 +239,9 @@ Flight::json (['message' => "You have successfully added the user", 'data' => $u
  *   path="/users/delete/{user_id}",
  *   tags = {"users"},
  *   summary="Delete user by id", 
+ *  security={
+     *          {"ApiKey": {}}   
+     *      },
  *   @OA\Response(
  *     response=200,
  *     description="Deleted user data or 500 status code exception otherwise"
@@ -229,5 +274,51 @@ Flight::route('GET /users/@user_id', function($user_id) {  //promiejniti rutu
 
     Flight::json($user, 200);
 });
+
+
+
+
+//Ne radi kod prof - vraca false
+
+     /**
+     * @OA\Get(
+     *      path="/users/info",
+     *      tags={"users"},
+     *      summary="Get logged in user infromation",
+     *      security={
+     *          {"ApiKey": {}}   
+     *      },
+     *      @OA\Response(
+     *           response=200,
+     *           description="User data, or false if user does not exist"
+     *      )
+     * )
+     */
+    Flight::route('GET /info', function() {
+        Flight::json(Flight::get('user'));
+    });
+
+
+    //DETAILS
+    
+     /**
+     * @OA\Get(
+     *      path="/users/details",
+     *      tags={"users"},
+     *      summary="Get logged in users details",
+     *      security={
+     *          {"ApiKey": {}}   
+     *      },
+     *      @OA\Response(
+     *           response=200,
+     *           description="User details"
+     *      )
+     * )
+     */
+    Flight::route('GET /details', function() {
+        Flight::json(Flight::get('user'));
+    });
+
+
 
 });
